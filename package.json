@@ -17,5 +17,8 @@
   },
   "devDependencies": {},
   "keywords": [],
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.16.0"
+  }
 }
