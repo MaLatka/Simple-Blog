@@ -26,11 +26,20 @@
   </div>
   <button
     type="submit"
-    class="btn btn-primary"
+    class="btn btn-light btn-sm"
     name="button"
     value="<%= postId %>"
   >
     Publish
+  </button>
+  <button
+    formaction="deletepost"
+    class="btn btn-light btn-sm"
+    type="submit"
+    name="deletePostBtn"
+    value="<%= postId %>"
+  >
+    Delete post
   </button>
 </form>
 
