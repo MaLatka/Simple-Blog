@@ -1,22 +1,15 @@
 <%- include("partials/header") -%>
 
 <div>
-<h1>Home</h1>
+  <h1 class="display-6">Home</h1>
 
-<p><%= pageContent %></p>
+  <p><%= pageContent %></p>
 </div>
 
 <% blogPosts.forEach((element) => { %>
-   <% console.log(element.title); %>
-    <div>
-        <h1>
-            <%= element.title %>
-        </h1>
-        <p>
-            <%= element.content.substring(0, 100) + "..." %>
-        </p>
-        <a href="/post/<%= element.id %>">Read more</a>
-    </div>
-    <% }) %>
-
-<%- include("partials/footer") -%>
+<div>
+  <h1 class="display-6"><%= element.title %></h1>
+  <p><%= element.content.substring(0, 100) + "..." %></p>
+  <a class="link-info" href="/post/<%= element.id %>">Read more</a>
+</div>
+<% }) %> <%- include("partials/footer") -%>

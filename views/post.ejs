@@ -1,11 +1,86 @@
 <%- include("partials/header") -%>
 <form action="/post" method="post">
-<h1><%= postTitle %></h1>
+  <h1 class="display-6"><%= postTitle %></h1>
 
-<p><%= postContent %></p>
-<br>
-<button formaction="editpost" class="btn btn-primary" type="submit" name="editButton" value="<%= postId %>">Edit post</button>
-<button formaction="deletepost" class="btn btn-primary" type="submit" name="deleteButton" value="<%= postId %>">Delete post</button>
+  <p><%= postContent %></p>
+  <br />
+  <button
+    formaction="editpost"
+    class="btn btn-light btn-sm"
+    type="submit"
+    name="editPostBtn"
+    value="<%= postId %>"
+  >
+    Edit post
+  </button>
+  <button
+    formaction="deletepost"
+    class="btn btn-light btn-sm"
+    type="submit"
+    name="deletePostBtn"
+    value="<%= postId %>"
+  >
+    Delete post
+  </button>
 </form>
+<br />
+<br />
+<div class="mt-5">
+  <div>
+    <form action="/post" method="post">
+      <label for="user-name">Your Name</label>
+      <br />
+      <input class="comm-input" type="text" name="userName" id="user-name" />
+      <br />
+      <textarea
+        class="mt-1 comm-input"
+        name="commentText"
+        id="comment-content"
+        cols="50"
+        rows="5"
+        placeholder="Write your comment here..."
+      ></textarea>
+      <br />
+      <button
+        formaction="submitcomment"
+        class="btn btn-light btn-sm mt-0"
+        type="submit"
+        name="submitCommentBtn"
+        value="<%= postId %>"
+      >
+        Comment
+      </button>
+    </form>
+  </div>
+
+  <div class="comments-section mt-5">
+    <h3 class="display-6">Comments</h3>
+
+    <% postComments.forEach(comment => { console.log(comment.id);%>
+
+    <div class="comment clearfix">
+      <hr />
+      <h5 name="commentAuthor"><%= comment.author %></h5>
+      <p><%= comment.date.toLocaleDateString() %></p>
+      <br />
+      <p class="text-muted" name="commentContent"><%= comment.content %></p>
+      <form action="/post" method="post">
+        <button
+          class="btn btn-light btn-sm del-comm-btn float-end mt-0"
+          type="submit"
+          name="deleteCommentBtn"
+          formaction="deletecomment"
+          value="<%= comment.id %>"
+        >
+          Delete
+        </button>
+      </form>
+    </div>
+
+    <% }) %>
+
+    <hr />
+  </div>
+</div>
 
 <%- include("partials/footer") -%>
